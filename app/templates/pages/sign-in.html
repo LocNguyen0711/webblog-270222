@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block title %}<title>BlogNTL | Login</title>{% endblock %}
+{% block user-items %}
+    <li><a href="{% url 'blog:sign_in' %}">Sign In</a></li>
+    <li><a href="{% url 'blog:sign_up' %}">Sign Up</a></li>
+{% endblock %}x
+{% block container %}
+<form action="{% url 'blog:sign_in' %}" method="POST" class="fSignin">
+    <label class="title">Sign In</label>
+    {% csrf_token %}
+    <label>Your Username:</label>
+    <input type="text" placeholder="Your User Name" name="username">
+    <label>Your Password:</label>
+    <input type="password" placeholder="Your Password" name="password">
+   <label>{{message}}</label>
+    <input type="submit" class="btnSignin" id="btnSignin">
+</form>
+{% endblock %}
