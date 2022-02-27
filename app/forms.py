@@ -1,9 +1,5 @@
-from tkinter import Widget
-from tkinter.tix import Form
-from turtle import width
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import Form, PasswordInput
 from django.contrib.auth.forms import UserCreationForm
 
 class fUserLogin(forms.Form):
