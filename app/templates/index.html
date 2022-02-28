@@ -17,9 +17,9 @@
     <div class="header">
         <div class="nav">
             <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">New Post</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="{% url 'blog:index' %}">Home</a></li>
+                <li><a href="{% url 'blog:post_create' %}">New Post</a></li>
+                <li><a href="{% url 'blog:user_profile' %}">Profile</a></li>
                 <li class="iUser">
                     <a href="#" class="user-icon fas fa-user"></a>
                     <ul class="user-items">
@@ -35,12 +35,23 @@
     {% endblock %}
     <div class="slider">
         {% block slider %}
-
         {% endblock %}
     </div>
     <div class="container">
         {% block container %}
-        ASDFASDFASFASDF
+        <ul class="posts">
+            {% for post in posts %}
+            <div class="content">
+                <li><span class="author">{{post.author.get_full_name}}</span></li>
+                <li><span class="title">{{post.title}}</span></li>
+                <br>
+                <li><span class="description">{{post.description}}</span></li>
+                <br>
+                <li><span class="body">{{post.body}}</span></li>
+                <br>
+            </div>
+            {% endfor %}
+        </ul>
         {% endblock %}
     </div>
     <div class="footer">

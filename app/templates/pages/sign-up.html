@@ -5,7 +5,7 @@
     <li><a href="{% url 'blog:sign_up' %}">Sign Up</a></li>
 {% endblock %}
 {% block container %}
-<form method="POST" action="{% url 'blog:sign_up' %}" class="fSignup">
+<form method="POST" action="{% url 'blog:sign_up' %}" class="fUser">
     <label class="title">Sign Up</label>
     {% csrf_token %}
     {{form}}

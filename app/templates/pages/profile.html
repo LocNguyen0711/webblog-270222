@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 {% block container %}
-<p>{{request.user.username}}</p>
-<p>{{request.user.first_name}} {{request.user.last_name}}</p>
+<ul>
+    <li><a>{{request.user.username}}</a></li>
+    <li><a>{{request.user.get_full_name}}</a></li>
+    <li><a>{{request.user.email}}</a></li>
+ 
+</ul>
 {% endblock %}

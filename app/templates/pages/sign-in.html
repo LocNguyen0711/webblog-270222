@@ -5,7 +5,7 @@
     <li><a href="{% url 'blog:sign_up' %}">Sign Up</a></li>
 {% endblock %}x
 {% block container %}
-<form action="{% url 'blog:sign_in' %}" method="POST" class="fSignin">
+<form action="{% url 'blog:sign_in' %}" method="POST" class="fUser">
     <label class="title">Sign In</label>
     {% csrf_token %}
     <label>Your Username:</label>

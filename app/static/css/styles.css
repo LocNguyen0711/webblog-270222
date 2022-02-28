@@ -19,16 +19,15 @@ li {
 /* End Common */
 /* Header */
 .header {
-    position: relative;
+    position: fixed;
+    z-index: 1;
     height: 45px;
     width: 100%;
     font-size: 18px;
     background-color: rgb(0, 0, 0);
-    z-index: 100;
 }
 .header .nav {
-    position: fixed;
-    z-index: 100;
+    position: relative;
     width: 100%;
 }
 .header .menu {
@@ -48,6 +47,7 @@ li {
     align-items: center;
     justify-content: center;
     color: rgb(252, 127, 45);
+    cursor: pointer;
 }
 .nav .menu > li {
     width: calc(100%/4);
@@ -84,8 +84,8 @@ li {
     align-items: center;
     justify-content: center;
 }
-.fSignin,
-.fSignup {
+.fUser,
+.fUser {
     position: absolute;
     display: flex;
     top: 100px;
@@ -99,26 +99,59 @@ li {
     border: 1px solid rgb(255, 255, 255);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.fSignup .helptext,
-.fSignup br {
+.fUser .helptext,
+.fUser br {
     display: none;
 }
-.fSignup input,     
-.fSignin input {
+.fUser input,     
+.fUser input {
     border: none;
     border-bottom: 1px solid rgb(173, 159, 159);
 }
-.fSignin label,
-.fSignup label {
+.fUser label,
+.fUser label {
     padding: 10px 0;
 }
 .btnSignin,
 .btnSignup {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: 10px;
-    margin: 10px 0;
-}
+    cursor: pointer;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}   
 form .title {
     font-size: 20px;
     font-weight:600;
     color: rgb(252, 127, 45);
+}
+.container .content {
+    position: relative;
+    display: flex;
+    top: 70px;
+    width: 600px;
+    padding: 10px;
+    font-size: 12px;
+    margin: 10px auto;
+    align-items: center;
+    height: max-content;
+    text-align: justify;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(167, 192, 184);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.container .content .title {
+    font-size: 14px;
+}
+.container .content .description {
+    color: rgba(0, 0, 0, .5);
+}
+.content .author {
+    position: absolute;
+    top: 0;
+    left: 0;
 }

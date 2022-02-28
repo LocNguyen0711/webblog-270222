@@ -1,6 +1,10 @@
+from tkinter import Widget
+from turtle import width
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+
+from app.models import mCreatePost
 
 class fUserLogin(forms.Form):
     username = forms.CharField(widget=forms.TextInput)
@@ -38,3 +42,10 @@ class fUserCreate(UserCreationForm):
         model = User
         fields = ["username", "first_name", "last_name",
                   "email", "password1", "password2"]
+class fCreatePost(forms.Form):
+    title = forms.CharField(widget= forms.Textarea(attrs={"rows":2}))
+    description = forms.CharField(widget= forms.Textarea(attrs={"rows":3}))
+    body = forms.CharField(widget= forms.Textarea(attrs={"rows":8}))
+    class Meta:
+        model = mCreatePost
+        exclude = ('user',)

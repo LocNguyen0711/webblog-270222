@@ -2,12 +2,16 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from .forms import fUserCreate
+from .forms import fUserCreate, fCreatePost
+from .models import mCreatePost
 # Create your views here.
 
 def index(request):
+    posts = mCreatePost.objects.all()
     if request.user.is_authenticated:
-          return render(request, "index.html")
+          return render(request, "index.html", {
+              "posts": posts
+          })
     else:
         return HttpResponseRedirect(reverse("blog:sign_in"))
 def sign_in(request):
@@ -55,3 +59,17 @@ def user_profile(request):
     if request.user.is_authenticated:
         return render(request, "pages/profile.html")
     return HttpResponseRedirect(reverse("blog:sign_in"))
+def post_create(request):
+    if request.method == "POST":
+        form = fCreatePost(request.POST)
+        if form.is_valid():
+            saveForm = mCreatePost(title = form.cleaned_data["title"], description = form.cleaned_data["description"], body = form.cleaned_data["body"])
+            saveForm.author = request.user
+            saveForm.save()
+            return HttpResponseRedirect(reverse("blog:index"))
+        return render(request, "pages/createpost.html", {
+            "form": form
+        })
+    return render(request, "pages/createpost.html", {
+        "form": fCreatePost()
+    })
